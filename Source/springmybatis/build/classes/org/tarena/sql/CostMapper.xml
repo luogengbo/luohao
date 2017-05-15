@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="org.tarena.dao.CostDao">
+
+
+<select id="findAll" resultType="org.tarena.entity.Cost">
+	select * from cost
+</select>
+
+<select id="findPage" parameterType="int" resultType="org.tarena.entity.Cost">
+	select * from cost limit #{begin},5
+</select>
+
+<select id="findMap" resultType="map">
+	select COST_ID as costId,NAME as 'name' from cost
+</select>
+
+<select id="findRows" resultType="int">
+	select count(1) from cost
+</select>
+<!-- 当属性名与字段名不一致时， 使用别名 -->
+<!-- 
+<select id="findCost" resultType="org.tarena.entity.CostBean1">
+	select cost_id id,name,status,creatime  cerateTime from cost
+</select>
+ -->
+ <!-- rusultType 默认按名称匹配装载数据
+ 	rusultMap按指定定义规则装载数据 -->
+ <select id="findCost" resultMap="costMap">
+ 	select cost_id ,name,status,creatime  from cost
+ </select>
+ 
+ 
+ <resultMap id="costMap" type="org.tarena.entity.CostBean1" >
+ 	<id property="id" column="cost_id"/>
+ 	 <!-- 
+ 	<result property="name" column="name"/>
+ 	<result property="status" column="status"/>
+ 	 -->
+ 	<result property="cerateTime" column="creatime"/>
+ </resultMap>
+ 
+</mapper>
