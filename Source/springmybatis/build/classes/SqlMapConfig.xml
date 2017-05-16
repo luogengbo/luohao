@@ -2,6 +2,9 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.2//EN"      
     "http://mybatis.org/dtd/mybatis-3-config.dtd">    
     
+	
+	
+	
 <configuration>    
     <environments default="environment">
     	<environment id="environment">
